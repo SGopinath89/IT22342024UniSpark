@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Lecturer= require("../models/Student");
+const Student= require("../models/Student");
 const Service = require("../service/GenericService")
 const{default:mongoose}=require('mongoose')
 const name="Student";
