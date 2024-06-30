@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 const adminSchema = new Schema({
     AdminId: { type :String,required:true},
     Password : { type :String,required:true},
-	Name : { type :String,required:true},
+	username : { type :String,required:true},
 
 })
 
