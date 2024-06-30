@@ -8,5 +8,5 @@ const SubjectSchema = new Schema({
 
 })
 
-const Subject= mongoose.model('subject',lsubjectSchema)
+const Subject= mongoose.model('subject',subjectSchema)
 module.exports=Subject
