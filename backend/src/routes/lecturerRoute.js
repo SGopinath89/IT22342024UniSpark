@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Lecturer= require("../models/Lecturer");
-//const Service = require("../service/GenericService")
+const Service = require("../service/GenericService")
 const{default:mongoose}=require('mongoose')
 const name="Lecturer";
 const { verifyToken } = require("../security/auth");
@@ -66,5 +66,52 @@ router.post('/login',async (req,res)=>{
     }
 })
 
+router.get("/", verifyToken, (req, res) => {
+    Service.getAll(res,Lecturer,name).catch((error)=>{
+        res.status(500).send("Server Error")
+    })
+});
+router.get("/:id", verifyToken, (req,res)=>{
+    Service.getBYId(req,res,Lecturer,name).catch((error)=>{
+        res.status(500).send("Server error")
+    })
+});
+
+router.post("/", verifyToken, (req, res) => {
+    const { LecturerId,Password,name,Department } = req.body;
+    if (!LecturerId || !Password || !name || !Department ) {
+    res.status(404).send("Please provide required fields");
+    } else {
+        Service.add(res,Lecturer,{LecturerId,Password,name,Department}).catch((error)=>{
+            res.status(500).send("Server  error")
+        })
+    } 
+});
+
+router.delete("/:id",verifyToken,(req,res)=>{
+    Service.deleteById(req,res,Lecturer,name).catch((error)=>{
+        res.status(500).send(error+"Server Error")
+    })
+});
+
+router.put("/:id", verifyToken, async(req, res) => {
+    const id = req.params.id;
+    const lecturers = await Lecturer.findById(id).catch((error) => {
+    console.error(error);
+    });
+    if (!lecturers) {
+    res.status(404).send("Author Not found");
+    } else {
+    const { LecturerId,Password,name,Department } = req.body;
+    if (!LecturerId || !Password || !name || !Department) {
+        res.status(400).send("Please provide required fields");
+    } else {
+        Service.update(res,lecturers,{LecturerId,Password,name,Department}).catch((error)=>{
+            res.status(500).send(error+"Server Error")
+           })
+        
+    }
+    }
+});
 
 module.exports = router;
