@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 800px;
+            text-align: center;
+        }
+        .container h2 {
+            margin-bottom: 20px;
+        }
+        .container input[type="text"], .container input[type="password"], .container input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .container input[type="submit"], .container .button {
+            width: calc(100% - 50px);
+            padding: 12px;
+            background-color: #1877F2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 10px;
+        }
+        .container input[type="submit"]:hover, .container .button:hover {
+            background-color: #1877F2;
+        }
+        .role-selection {
+            margin: 20px 0;
+        }
+        .role-selection input[type="radio"] {
+            margin-right: 10px;
+        }
+        .role-selection label {
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>WELCOME</h2>
+        <form action="/signup" method="post">
+            <input type="text" placeholder="User Name" name="username" required>
+            <input type="password" placeholder="Password" name="password" required>
+            <input type="password" placeholder="Confirm Password" name="confirm_password" required>
+            <input type="number" placeholder="Year" name="year" required>
+            <div class="role-selection">
+                <input type="radio" id="student" name="role" value="student" required>
+                <label for="student">Student</label>
+                <input type="radio" id="lecturer" name="role" value="lecturer">
+                <label for="lecturer">Lecturer</label>
+                <input type="radio" id="instructor" name="role" value="instructor">
+                <label for="instructor">Instructor</label>
+                <input type="radio" id="admin" name="role" value="admin">
+                <label for="admin">Admin</label>
+            </div>
+            <input type="submit" value="Sign Up">
+        </form>
+        <a href="/login" class="button">Login</a>
+    </div>
+
+</body>
+</html>
