@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Admin= require("../models/Admin");
-//const Service = require("../service/GenericService")
+const Service = require("../service/GenericService")
 const{default:mongoose}=require('mongoose')
 const name="Admin";
 const { verifyToken } = require("../security/auth");
@@ -67,5 +67,52 @@ router.post('/login',async (req,res)=>{
     }
 })
 
+router.get("/", verifyToken, (req, res) => {
+    Service.getAll(res,Admin,name).catch((error)=>{
+        res.status(500).send("Server Error")
+    })
+});
+router.get("/:id", verifyToken, (req,res)=>{
+    Service.getBYId(req,res,Admin,name).catch((error)=>{
+        res.status(500).send("Server error")
+    })
+});
+
+router.post("/", verifyToken, (req, res) => {
+    const { AdminId,Password,Name } = req.body;
+    if (!AdminId || !Password || !Name) {
+    res.status(404).send("Please provide required fields");
+    } else {
+        Service.add(res,Admin,{AdminId,Password,Name}).catch((error)=>{
+            res.status(500).send("Server  error")
+        })
+    } 
+});
+
+router.delete("/:id",verifyToken,(req,res)=>{
+    Service.deleteById(req,res,Admin,name).catch((error)=>{
+        res.status(500).send(error+"Server Error")
+    })
+});
+
+router.put("/:id", verifyToken, async(req, res) => {
+    const id = req.params.id;
+    const admins = await Admin.findById(id).catch((error) => {
+    console.error(error);
+    });
+    if (!admins) {
+    res.status(404).send("Author Not found");
+    } else {
+    const { AdminId,Password,Name } = req.body;
+    if (!AdminId || !Password || !Name) {
+        res.status(400).send("Please provide required fields");
+    } else {
+        Service.update(res,admins,{AdminId,Password,Name}).catch((error)=>{
+            res.status(500).send(error+"Server Error")
+           })
+        
+    }
+    }
+});
 
 module.exports = router;

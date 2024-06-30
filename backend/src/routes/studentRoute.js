@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const Lecturer= require("../models/Student");
-//const Service = require("../service/GenericService")
+const Student= require("../models/Student");
+const Service = require("../service/GenericService")
 const{default:mongoose}=require('mongoose')
 const name="Student";
 const { verifyToken } = require("../security/auth");
@@ -66,6 +66,53 @@ router.post('/login',async (req,res)=>{
     }
 })
 
+router.get("/", verifyToken, (req, res) => {
+    Service.getAll(res,Student,name).catch((error)=>{
+        res.status(500).send("Server Error")
+    })
+});
+router.get("/:id", verifyToken, (req,res)=>{
+    Service.getBYId(req,res,Student,name).catch((error)=>{
+        res.status(500).send("Server error")
+    })
+});
+
+router.post("/", verifyToken, (req, res) => {
+    const {StudentId,Password,name,Department} = req.body;
+    if (!StudentId || !Password || !name || !Department) {
+    res.status(404).send("Please provide required fields");
+    } else {
+        Service.add(res,Student,{StudentId,Password,name,Department}).catch((error)=>{
+            res.status(500).send("Server  error")
+        })
+    } 
+});
+
+router.delete("/:id",verifyToken,(req,res)=>{
+    Service.deleteById(req,res,Student,name).catch((error)=>{
+        res.status(500).send(error+"Server Error")
+    })
+});
+
+router.put("/:id", verifyToken, async(req, res) => {
+    const id = req.params.id;
+    const students = await Student.findById(id).catch((error) => {
+    console.error(error);
+    });
+    if (!students) {
+    res.status(404).send("Author Not found");
+    } else {
+    const {StudentId,Password,name,Department} = req.body;
+    if (!StudentId || !Password || !name || !Department) {
+        res.status(400).send("Please provide required fields");
+    } else {
+        Service.update(res,students,{StudentId,Password,name,Department}).catch((error)=>{
+            res.status(500).send(error+"Server Error")
+           })
+        
+    }
+    }
+});
 
 
 module.exports = router;

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Instructor= require("../models/Instructor");
-//const Service = require("../service/GenericService")
+const Service = require("../service/GenericService")
 const{default:mongoose}=require('mongoose')
 const name="Instructor";
 const { verifyToken } = require("../security/auth");
@@ -66,5 +66,52 @@ router.post('/login',async (req,res)=>{
     }
 })
 
+router.get("/", verifyToken, (req, res) => {
+    Service.getAll(res,Instructor,name).catch((error)=>{
+        res.status(500).send("Server Error")
+    })
+});
+router.get("/:id", verifyToken, (req,res)=>{
+    Service.getBYId(req,res,Instructor,name).catch((error)=>{
+        res.status(500).send("Server error")
+    })
+});
+
+router.post("/", verifyToken, (req, res) => {
+    const {InstructorId,Password,Name} = req.body;
+    if (!InstructorId || !Password || !Name) {
+    res.status(404).send("Please provide required fields");
+    } else {
+        Service.add(res,Instructor,{InstructorId,Password,Name}).catch((error)=>{
+            res.status(500).send("Server  error")
+        })
+    } 
+});
+
+router.delete("/:id",verifyToken,(req,res)=>{
+    Service.deleteById(req,res,Instructor,name).catch((error)=>{
+        res.status(500).send(error+"Server Error")
+    })
+});
+
+router.put("/:id", verifyToken, async(req, res) => {
+    const id = req.params.id;
+    const instructors = await Instructor.findById(id).catch((error) => {
+    console.error(error);
+    });
+    if (!instructors) {
+    res.status(404).send("Author Not found");
+    } else {
+    const {InstructorId,Password,Name} = req.body;
+    if (!InstructorId || !Password || !Name) {
+        res.status(400).send("Please provide required fields");
+    } else {
+        Service.update(res,instructors,{InstructorId,Password,Name}).catch((error)=>{
+            res.status(500).send(error+"Server Error")
+           })
+        
+    }
+    }
+});
 
 module.exports = router;
