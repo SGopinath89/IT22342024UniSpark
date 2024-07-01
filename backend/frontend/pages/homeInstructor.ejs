@@ -12,6 +12,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+			background: url('images/bg.jpg') no-repeat center center fixed;
         }
         .container {
             text-align: center;
@@ -29,11 +30,7 @@
             align-items: center;
             cursor: pointer;
         }
-        .back-arrow::before {
-            content: '<=';
-            font-size: 24px;
-            color: #000;
-        }
+
         .button {
             width: 200px;
             height: 50px;
@@ -46,9 +43,10 @@
     </style>
 </head>
 <body>
-    <div class="back-arrow"></div>
+        <div class="back-arrow">&#x2190;</div>
     <div class="container">
         <button class="button">Chat box</button>
     </div>
 </body>
 </html>
+
