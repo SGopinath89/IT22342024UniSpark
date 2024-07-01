@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Selection</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 80px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .course-options {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+		
+		.back-button {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .back-button {
+            border-radius: 50%;
+			width : 50px;
+			height : 50px;
+            background-color: #F88379;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-circle: 4px;
+            transition: background-color 0.3s ease;
+			float: left;
+			align-items: center;
+			justify-content: center;
+        }
+		
+		.course-button {
+            background-color: #1877F2;
+            border: none;
+            padding:20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .course-button:hover {
+            background-color: #1877F2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="back-options">
+            <button class="back-button"><=</button>
+        </div>
+		<br>
+		<h2>Are you sure to start the Quiz?</h2>
+        <div class="course-options">
+            <button class="course-button">Start Attempt</button>
+            </div>
+    </div>
+</body>
+</html>
