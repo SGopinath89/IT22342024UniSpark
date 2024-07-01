@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Approvement List</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+        }
+
+
+        .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .approval-list {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .approval-list ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .form label {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .form input {
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            max-width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .button {
+            background-color: #1877F2;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-circle: 4px;
+            transition: background-color 0.3s ease;
+        }
+		 .home-button {
+		    border-radius: 50%;
+			width : 50px;
+			height : 50px;
+            background-color: #F88379;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-circle: 4px;
+            transition: background-color 0.3s ease;
+			float: left;
+        }
+
+        .button:hover {
+            background-color: #a9a9a9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="back-arrow">
+		<button class="home-button"><=</button><br><br>
+            <span></span>
+        </div>
+        <div class="title">Student Approvement List</div>
+        <div class="approval-list">
+            <ul>
+                <li>Request 1</li>
+                <li>Request 2</li>
+                <li>Request 3</li>
+            </ul>
+        </div>
+        <div class="form">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+        </div>
+        <div class="buttons">
+            <button class="button">Save</button>
+            <button class="button">Reject</button>
+        </div>
+    </div>
+</body>
+</html>
