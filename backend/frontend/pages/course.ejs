@@ -6,21 +6,23 @@
     <title>Course Selection</title>
     <style>
         body {
+		
             margin: 0;
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f0f0f0;
+            background: url('images/bg.jpg') no-repeat center center fixed;
         }
 
         .container {
-            background-color: white;
-            padding: 80px;
+            background-color: rgba(0, 0, 0, 0.4);;
+            padding: 100px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
+		
         }
 
         .course-options {
@@ -28,24 +30,21 @@
             flex-direction: column;
             gap: 40px;
         }
-		
-		.back-button {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .back-button {
-			width : 50px;
-			height : 50px;
-			border-radius: 50%;
+		      .back-arrow {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
             background-color: #F88379;
-            border: none;
-            padding: 10px;
-            font-size: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             cursor: pointer;
-            transition: background-color 0.3s ease;
         }
+		
+
 		
 		.course-button {
             background-color: #1877F2;
@@ -63,12 +62,8 @@
     </style>
 </head>
 <body>
+    <div class="back-arrow">&#x2190;</div>
     <div class="container">
-        <div class="back-options">
-            <button class="back-button"><=</button>
-           
-        </div>
-		<br><br>
         <div class="course-options">
             <button class="course-button">IT</button>
             <button class="course-button">AMC</button>
