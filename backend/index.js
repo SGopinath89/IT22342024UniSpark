@@ -5,6 +5,7 @@ const port = 8080
 
 app.use(express.json());
 
+
 mongoose.connect('mongodb://localhost:27017/UniSparkDb').then(()=>{
     console.log('conected database');
 }).catch((error)=>{
