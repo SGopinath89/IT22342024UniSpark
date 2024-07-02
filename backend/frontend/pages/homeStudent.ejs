@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Student Panel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('images/bg.jpg') no-repeat center center fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 600px;
+            text-align: center;
+            position: relative;
+        }
+        .menu-item {
+            width: 93%;
+            padding: 20px;
+            background-color: #1877F2;
+            color: black;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+        }
+        .menu-item:hover {
+            background-color: #bbb;
+        }
+        .back-arrow {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #F88379;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="back-arrow">&#x2190;</div>
+    <div class="container">
+        <a href="#" class="menu-item">Courses</a>
+        <a href="#" class="menu-item">Quiz</a>
+        <a href="#" class="menu-item">Chat with Instructor</a>
+    </div>
+</body>
+</html>

@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background: url('images/bg.jpg') no-repeat center center fixed;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -15,7 +15,7 @@
             margin: 0;
         }
         .login-container {
-            background-color: white;
+            background-color: rgba(0, 0, 0, 0.4);;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -35,7 +35,7 @@
         .login-container input[type="submit"] {
             width: 100%;
             padding: 15px;
-            background-color: #4CAF50;
+            background-color:#1877F2;
             color: white;
             border: none;
             border-radius: 4px;
@@ -53,24 +53,28 @@
         .role-selection label {
             margin-right: 20px;
         }
+		
+		.white-text{
+		    color : white;
+			}
     </style>
 </head>
 <body>
 
     <div class="login-container">
-        <h2>WELCOME</h2>
+        <h2 class="white-text">WELCOME</h2>
         <form action="/login" method="post">
             <input type="text" placeholder="User Name" name="username" required>
             <input type="password" placeholder="Password" name="password" required>
             <div class="role-selection">
                 <input type="radio" id="student" name="role" value="student" required>
-                <label for="student">Student</label>
+                <label class="white-text" for="student">Student</label>
                 <input type="radio" id="lecturer" name="role" value="lecturer">
-                <label for="lecturer">Lecturer</label>
+                <label class="white-text" for="lecturer">Lecturer</label>
                 <input type="radio" id="instructor" name="role" value="instructor">
-                <label for="instructor">Instructor</label>
+                <label class="white-text" for="instructor">Instructor</label>
                 <input type="radio" id="admin" name="role" value="admin">
-                <label for="admin">Admin</label>
+                <label class="white-text" for="admin">Admin</label>
             </div>
             <input type="submit" value="Login">
         </form>

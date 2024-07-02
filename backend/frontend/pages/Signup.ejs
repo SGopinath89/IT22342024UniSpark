@@ -8,6 +8,8 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
+			background-size: cover;
+			background: url('images/bg.jpg') no-repeat center center fixed;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -15,7 +17,7 @@
             margin: 0;
         }
         .container {
-            background-color: white;
+            background-color: rgba(0, 0, 0, 0.4);
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -56,12 +58,17 @@
         .role-selection label {
             margin-right: 20px;
         }
+		
+		.white-text {
+            color: white;
+        }
+		
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h2>WELCOME</h2>
+        <h2 class="white-text">WELCOME</h2>
         <form action="/signup" method="post">
             <input type="text" placeholder="User Name" name="username" required>
             <input type="password" placeholder="Password" name="password" required>
@@ -69,13 +76,13 @@
             <input type="number" placeholder="Year" name="year" required>
             <div class="role-selection">
                 <input type="radio" id="student" name="role" value="student" required>
-                <label for="student">Student</label>
+                <label for="student" class="white-text">Student</label>
                 <input type="radio" id="lecturer" name="role" value="lecturer">
-                <label for="lecturer">Lecturer</label>
+                <label for="lecturer" class="white-text">Lecturer</label>
                 <input type="radio" id="instructor" name="role" value="instructor">
-                <label for="instructor">Instructor</label>
+                <label for="instructor" class="white-text">Instructor</label>
                 <input type="radio" id="admin" name="role" value="admin">
-                <label for="admin">Admin</label>
+                <label for="admin" class="white-text">Admin</label>
             </div>
             <input type="submit" value="Sign Up">
         </form>
