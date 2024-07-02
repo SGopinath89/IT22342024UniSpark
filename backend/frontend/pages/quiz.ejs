@@ -6,7 +6,7 @@
     <title>Quiz</title>
     <style>
         body {
-            background-color: #E5E5E5;
+            background: url('bg.png') no-repeat center center fixed;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -15,7 +15,7 @@
             font-family: Arial, sans-serif;
         }
         .quiz-container {
-            background-color: #fff;
+             background-color: rgba(0, 0, 0, 0.4);
             width: 600px;
             padding: 20px;
             border-radius: 10px;
@@ -29,12 +29,14 @@
             font-size: 18px;
         }
         .answers {
+			
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
             padding: 10px 0;
         }
         .answer {
+			color:white;
             display: flex;
             align-items: center;
             font-size: 16px;
@@ -76,7 +78,7 @@
             <div class="answer"><input type="radio" name="q2"> Answer 03</div>
             <div class="answer"><input type="radio" name="q2"> Answer 04</div>
         </div>
-        <button class="finish-btn">Finish Attempt</button>
+        <button class="finish-btn"><b>Finish Attempt</b></button>
     </div>
 </body>
 </html>
