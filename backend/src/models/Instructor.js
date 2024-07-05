@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const instructorSchema = new Schema({
-    InstructorId: { type :String,required:true},
-    Password : { type :String,required:true},
+   
+    password : { type :String,required:true},
 	userame : { type :String,required:true},
 	
 })
