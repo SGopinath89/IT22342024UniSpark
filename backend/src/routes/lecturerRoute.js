@@ -7,13 +7,14 @@ const name="Lecturer";
 const { verifyToken } = require("../security/auth");
 const bcrypt = require("bcrypt")
 const secretkey = "phyvauac.lk@2024"
+const jwt=require ('jsonwebtoken')
 
 //Register part
 router.post('/register',async (req,res)=>{
     try{
-        let {username,password} = req.body
+        let {username,Password,Department} = req.body
 
-        if(!username || !password){
+        if(!username || !Password || !Department){
             return res.status(400).json({error_message:"please provide required feilds"})
         }
 
@@ -23,10 +24,10 @@ router.post('/register',async (req,res)=>{
             return res.status(400).json({error_message:"username already taken"})
         }
 
-        const salt = await bcrypt.genSalt()
-        password = await bcrypt.hash(password,salt)
+        const salt = await bcrypt.genSaltSync(10)
+        Password = await bcrypt.hash(Password,salt)
 
-        const result = await Lecturer.create({username,password})
+        const result = await Lecturer.create({username,Password,Department})
         return res.status(200).json({result})
 
     }
@@ -38,9 +39,9 @@ router.post('/register',async (req,res)=>{
 //login part
 router.post('/login',async (req,res)=>{
     try{
-        let {username,password} = req.body
+        let {username,Password} = req.body
 
-        if(!username || !password){
+        if(!username || !Password){
             return res.status(400).json({error_message:"please provide required feilds"})
         }
 
@@ -50,14 +51,14 @@ router.post('/login',async (req,res)=>{
             return res.status(400).json({error_message:"Invalid credentials"})
         }
 
-        const passMatch = await bcrypt.compare(password,Lecturer.password)
+        const passMatch = await bcrypt.compare(Password,user.Password)
 
-        if(!password){
+        if(!Password){
             return res.status(400).json({error_message:"Invalid credentials"})
         }
 
 
-        const token = jwt.sign({username:Lecturer.username},secretkey)
+        const token = jwt.sign({username:user.username},secretkey)
         return res.status(200).json({token})
 
     }
