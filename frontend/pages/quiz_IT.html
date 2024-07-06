@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Quiz</title>
+    <style>
+        body {
+            background: url('bg.png') no-repeat center center fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .quiz-container {
+             background-color: rgba(0, 0, 0, 0.4);
+            width: 600px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            background-color: #C4C4C4;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        .answers {
+			
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 10px 0;
+        }
+        .answer {
+			color:white;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+        }
+        .answer input[type="radio"] {
+            margin-right: 10px;
+        }
+        .finish-btn {
+            background-color:#1877F2;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            float:right;
+        }
+		h2{
+			color:white;
+			
+		}
+		#result{
+			color:white;
+		}
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h2><center>IT Quiz</center></h2>
+        <form id="quiz-form">
+            <div class="question">
+                <p>Question 1: Which protocol is used to send email?</p>
+                <label>
+                    <input type="radio" name="q1" value="a"> A) HTTP
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="b"> B) FTP
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="c"> C) SMTP
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="d"> D) SNMP
+                </label>
+            </div>
+			
+            <div class="question">
+                <p>Question 2: What does HTML stand for?</p>
+                <label>
+                    <input type="radio" name="q2" value="a"> A) HyperText Markup Language
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="b"> B) HomeTool Markup Language
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="c"> C) HyperLinks and Text Markup Language
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="d"> D) Hyperlinking Text Marking Language
+                </label>
+            </div>
+			
+			<div class="question">
+                <p>Question 3: Which of the following is a NoSQL database?</p>
+                <label>
+                    <input type="radio" name="q3" value="a"> A) MySQL
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="b"> B) PostgreSQL
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="c"> C) MongoDB
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="d"> D) Oracle
+                </label>
+            </div>
+			
+			<div class="question">
+                <p>Question 4: Which language is primarily used for web development on the client side?</p>
+                <label>
+                    <input type="radio" name="q4" value="a"> A) Python
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="b"> B) JavaScript
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="c"> C) Java
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="d"> D) C++
+                </label>
+            </div>
+			
+			
+			
+            <button type="button" class="finish-btn" onclick="checkAnswersIT()">Finish Attemp</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
+

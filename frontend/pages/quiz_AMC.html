@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        body {
+            background: url('bg.png') no-repeat center center fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .quiz-container {
+             background-color: rgba(0, 0, 0, 0.4);
+            width: 600px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            background-color: #C4C4C4;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        .answers {
+			
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 10px 0;
+        }
+        .answer {
+			color:white;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+        }
+        .answer input[type="radio"] {
+            margin-right: 10px;
+        }
+        .finish-btn {
+            background-color:#1877F2;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            float:right;
+        }
+		h2{
+			color:white;
+			
+		}
+		#result{
+			color:white;
+		}
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h2><center>AMC Quiz</center></h2>
+        <form id="quiz-form">
+            <div class="question">
+                <p>Question 1: What is the value of π (pi) rounded to two decimal places?</p>
+                <label>
+                    <input type="radio" name="q1" value="a"> A) 3.12
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="b"> B) 3.14
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="c"> C) 3.15
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="d"> D) 3.16
+                </label>
+            </div>
+			
+            <div class="question">
+                <p>Question 2: Solve for x: 2x+3=7</p>
+                <label>
+                    <input type="radio" name="q2" value="a"> A) 1
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="b"> B) 2
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="c"> C) 3
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="d"> D) 4
+                </label>
+            </div>
+			
+			<div class="question">
+                <p>Question 3:What is the area of a triangle with base 4 and height 5?</p>
+                <label>
+                    <input type="radio" name="q3" value="a"> A) 9
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="b"> B) 10
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="c"> C) 12
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="d"> D) 20
+                </label>
+            </div>
+			
+			<div class="question">
+                <p>Question 4: What is the perimeter of square with base 4?</p>
+                <label>
+                    <input type="radio" name="q4" value="a"> A) 16
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="b"> B) 8
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="c"> C) 10
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="d"> D) 32
+                </label>
+            </div>
+			
+			
+             
+			
+            <button type="button" class="finish-btn" onclick="checkAnswersAmc()">Finish Attemp</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
+

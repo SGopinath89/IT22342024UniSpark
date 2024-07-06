@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        body {
+            background: url('bg.png') no-repeat center center fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .quiz-container {
+             background-color: rgba(0, 0, 0, 0.4);
+            width: 600px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            background-color: #C4C4C4;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        .answers {
+			
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 10px 0;
+        }
+        .answer {
+			color:white;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+        }
+        .answer input[type="radio"] {
+            margin-right: 10px;
+        }
+        .finish-btn {
+            background-color:#1877F2;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            float:right;
+        }
+		h2{
+			color:white;
+			
+		}
+		#result{
+			color:white;
+		}
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h2><center>BIO Quiz</center></h2>
+        <form id="quiz-form">
+            <div class="question">
+                <p>Question 1: What is the powerhouse of the cell?</p>
+                <label>
+                    <input type="radio" name="q1" value="a"> A) Nucleus
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="b"> B) Ribosome
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="c"> C) Mitochondria
+                </label>
+                <label>
+                    <input type="radio" name="q1" value="d"> D) Chloroplast
+                </label>
+            </div>
+			
+            <div class="question">
+                <p>Question 2: Which process do plants use to convert sunlight into food?</p>
+                <label>
+                    <input type="radio" name="q2" value="a"> A) Respiration
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="b"> B) Photosynthesis
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="c"> C) Fermentation
+                </label>
+                <label>
+                    <input type="radio" name="q2" value="d"> D) Transpiration
+                </label>
+            </div>
+			
+			<div class="question">
+                <p>Question 3: What molecule carries genetic information in most living organisms?</p>
+                <label>
+                    <input type="radio" name="q3" value="a"> A) DNA
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="b"> B) RNA
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="c"> C) Protein
+                </label>
+                <label>
+                    <input type="radio" name="q3" value="d"> D) Lipid
+                </label>
+            </div>
+			
+			<div class="question">
+                <p>Question 4: Which organ is primarily responsible for detoxification in the human body?</p>
+                <label>
+                    <input type="radio" name="q4" value="a"> A) Heart
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="b"> B) Lungs
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="c"> C) Liver
+                </label>
+                <label>
+                    <input type="radio" name="q4" value="d"> D) Kidneys
+                </label>
+            </div>
+			
+			
+			
+            <button type="button" class="finish-btn" onclick="checkAnswersBio()">Finish Attemp</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
+
