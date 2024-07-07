@@ -4,7 +4,7 @@ const Subject= require("../models/Subject");
 const Course= require("../models/Course");
 const Service = require("../service/GenericService")
 const{default:mongoose}=require('mongoose')
-const { verifyToken,studentverifyToken, lecturerverifyToken, instructorverifyToken } = require("../security/auth");
+const {studentverifyToken, lecturerverifyToken} = require("../security/auth");
 const name="Subject";
 
 router.get("/", studentverifyToken, lecturerverifyToken, (req, res) => {

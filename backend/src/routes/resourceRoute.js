@@ -5,7 +5,7 @@ const Subject= require("../models/Subject");
 const Resource=require("../models/Resource"); 
 const Service = require("../service/GenericService")
 const{default:mongoose}=require('mongoose')
-const { studentverifyToken,lecturerverifyToken,verifyToken } = require("../security/auth");
+const { studentverifyToken,lecturerverifyToken } = require("../security/auth");
 const name="Resource";
 
 const storage= multer.diskStorage({
@@ -55,7 +55,7 @@ router.get("/:id",studentverifyToken, lecturerverifyToken,(req,res)=>{
 });
 
 //add file to db
-router.post('/:id', upload.single('resource'), async (req, res) => {
+router.post('/:id', upload.single('resource'),lecturerverifyToken, async (req, res) => {
     const { id } = req.params;
     const { type, url } = req.body;
 

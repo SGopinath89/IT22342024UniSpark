@@ -1,5 +1,8 @@
 const jwt = require('jsonwebtoken')
 const secretkey = "phyvauac.lk@2024"
+const studentmodule = require('../models/Student');
+const instructormodule = require('../models/Instructor');
+const lecturermodule = require('../models/Lecturer');
 
 function verifyToken(req,res,next){
     try{
@@ -48,5 +51,15 @@ async function verifyUserToken(req, res, next, userModule) {
         res.status(401).send(err);
     }
 }
+function studentverifyToken(req, res, next) {
+    verifyUserToken(req, res, next, studentmodule);
+}
+function lecturerverifyToken(req, res, next) {
+    verifyUserToken(req, res, next, lecturermodule);
+}
+function instructorverifyToken(req, res, next) {
+    verifyUserToken(req, res, next, instructormodule);
+}
 
-module.exports={verifyToken}
+
+module.exports={verifyToken, studentverifyToken, lecturerverifyToken, instructorverifyToken}

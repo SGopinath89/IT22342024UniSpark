@@ -4,21 +4,21 @@ const Chat= require("../models/Chat");
 const Instructor= require("../models/Instructor");
 const Service = require("../service/GenericService")
 const{default:mongoose}=require('mongoose')
-const { verifyToken } = require("../security/auth");
+const { studentverifyToken, instructorverifyToken } = require("../security/auth");
 const name="Chat";
 
-router.get("/", verifyToken, (req, res) => {
+router.get("/", instructorverifyToken, (req, res) => {
     Service.getAll(res,Chat,name).catch((error)=>{
         res.status(500).send("Server Error")
     })
 });
-router.get("/:id", verifyToken, (req,res)=>{
+router.get("/:id", instructorverifyToken, (req,res)=>{
     Service.getBYId(req,res,Chat,name).catch((error)=>{
         res.status(500).send("Server error")
     })
 });
 
-router.post("/", verifyToken, (req, res) => {
+router.post("/", studentverifyToken, (req, res) => {
     const StudentId=req.user._id;
     const { Message,InstructorId } = req.body;
     if (!Message || !InstructorId) {
@@ -30,7 +30,7 @@ router.post("/", verifyToken, (req, res) => {
     } 
 });
 
-router.delete("/:id",verifyToken,(req,res)=>{
+router.delete("/:id",instructorverifyToken,(req,res)=>{
     Service.deleteById(req,res,Chat,name).catch((error)=>{
         res.status(500).send(error+"Server Error")
     })

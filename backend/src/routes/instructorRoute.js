@@ -78,7 +78,7 @@ router.get("/:id", verifyToken, (req,res)=>{
     })
 });
 
-router.post("/", verifyToken, (req, res) => {
+router.post("/", instructorverifyToken, (req, res) => {
     const {InstructorId,Password,Name} = req.body;
     if (!InstructorId || !Password || !Name) {
     res.status(404).send("Please provide required fields");
