@@ -150,4 +150,10 @@ document.addEventListener("DOMContentLoaded", function() {
     chatButton.addEventListener('click', function() {
         window.location.href = 'chat.html'; // Change to the actual chat page URL
     });
+
+    const chatMessages =document.getElementById('chat-messages');
+    const chatInput =document.getElementById('chat-input');
+    const sendBtn =document.getElementById('send-btn');
+    const instructorId = 'INSTRUCTOR_ID';
+    const studentId = 'STUDENT_ID';
 });
