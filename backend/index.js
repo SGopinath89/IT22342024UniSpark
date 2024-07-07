@@ -3,6 +3,9 @@ const mongoose= require('mongoose')
 const app = new express()
 const port = 8080
 
+const instructorRoute=require('./src/routes/instructorRoute')
+const studentRoute=require('./src/routes/studentRoute')
+
 app.use(express.json());
 
 
