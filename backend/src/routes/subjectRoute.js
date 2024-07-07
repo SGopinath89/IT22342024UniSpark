@@ -4,10 +4,10 @@ const Subject= require("../models/Subject");
 const Course= require("../models/Course");
 const Service = require("../service/GenericService")
 const{default:mongoose}=require('mongoose')
-const {studentverifyToken, lecturerverifyToken} = require("../security/auth");
+const {studentverifyToken, lecturerverifyToken,verifyToken} = require("../security/auth");
 const name="Subject";
 
-router.get("/", studentverifyToken, lecturerverifyToken, (req, res) => {
+router.get("/", verifyToken, (req, res) => {
     
     Service.getAll(res,Subject,name).catch((error)=>{
         res.status(500).send(error+"Service error")
@@ -16,7 +16,7 @@ router.get("/", studentverifyToken, lecturerverifyToken, (req, res) => {
 });
 
 
-router.get("/:id", studentverifyToken, lecturerverifyToken,(req,res)=>{
+router.get("/:id", verifyToken,(req,res)=>{
     Service.getBYId(req,res,Subject,name).catch((error)=>{
         res.status(500).send("Server error")
     })

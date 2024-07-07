@@ -103,11 +103,11 @@ router.put("/:id", instructorverifyToken, async(req, res) => {
     if (!instructors) {
     res.status(404).send("Author Not found");
     } else {
-    const {InstructorId,Password,Name} = req.body;
-    if (!InstructorId || !Password || !Name) {
+    const {username,Password} = req.body;
+    if (!username || !Password) {
         res.status(400).send("Please provide required fields");
     } else {
-        Service.update(res,instructors,{InstructorId,Password,Name}).catch((error)=>{
+        Service.update(res,instructors,{username,Password}).catch((error)=>{
             res.status(500).send(error+"Server Error")
            })
         
