@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: url('images/bg.jpg') no-repeat center center fixed;
+            background: url('./images/bg.jpg') no-repeat center center fixed;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -60,10 +60,10 @@
     </style>
 </head>
 <body>
-
+    <div class="back-arrow" onclick="window.history.back();">&#x2190;</div>
     <div class="login-container">
         <h2 class="white-text">WELCOME</h2>
-        <form action="/login" method="post">
+        <form id="loginForm" method="post">
             <input type="text" placeholder="User Name" name="username" required>
             <input type="password" placeholder="Password" name="password" required>
             <div class="role-selection">
@@ -79,6 +79,6 @@
             <input type="submit" value="Login">
         </form>
     </div>
-
+    <script src="../script/script1.js"></script>
 </body>
 </html>

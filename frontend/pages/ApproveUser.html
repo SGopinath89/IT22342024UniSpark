@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Approval Panel</title>
+    <title>Approval Panel</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -87,26 +87,16 @@
     </style>
 </head>
 <body>
-    <div class="back-arrow">&#x2190;</div>
+    <div class="back-arrow" onclick="window.history.back();">&#x2190;</div>
 	<div class="wrapper">
     <div class="container">
         <div class="approval-list">
-            <h2>Students Approvement List</h2>
-            <ul>
-                <li>Request 1</li>
-                <li>Request 2</li>
-                <li>Request 3</li>
+            <h2>Approvement List</h2>
+            <ul id="requestList" >
+                
             </ul>
-        </div>
-        <form action="#">
-            <input type="text" placeholder="Username" name="username" required>
-            <input type="password" placeholder="Password" name="password" required>
-            <div>
-                <button type="submit" class="button">Save</button>
-                <button type="button" class="button">Reject</button>
-            </div>
-        </form>
-		</div>
+      
     </div>
+	 <script src="../script/script1.js"></script>
 </body>
 </html>
