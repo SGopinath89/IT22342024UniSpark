@@ -29,11 +29,7 @@
             align-items: center;
             cursor: pointer;
         }
-        .back-arrow::before {
-            content: '<=';
-            font-size: 24px;
-            color: #000;
-        }
+       
         .button {
             width: 200px;
             height: 50px;
@@ -42,15 +38,20 @@
             border: none;
             font-size: 16px;
             cursor: pointer;
+            text-decoration: none; 
+            color: white; 
+            display: inline-block;
+            line-height: 50px;
+            text-align: center; 
+            border-radius: 2px; 
         }
     </style>
-    
 </head>
 <body>
-    <div class="back-arrow"></div>
+    <div class="back-arrow" onclick="window.history.back();">&#x2190;</div>
     <div class="container">
-        <button class="button">Lecture panel</button>&nbsp &nbsp &nbsp &nbsp
-        <button class="button">Quiz</button>
+         <a href="lecturePanel.html" class="button">Lecture panel</a>
+        <a href="quiz.html" class="button">Quiz</a>
     </div>
 </body>
 </html>
