@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose= require('mongoose')
 const app = new express()
 const port = 8080
+const path = require('path');
 
 const adminRoute=require('./src/routes/adminRoute')
 const instructorRoute=require('./src/routes/instructorRoute')
@@ -36,6 +37,15 @@ app.use('/chat',chatRoute)
 app.use('/course',courseRoute)
 app.use('/subject',subjectRoute)
 app.use('/resource',resourceRoute)
+
+
+
+app.use(express.static(path.join(__dirname, 'frontend')));
+
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
+});
 
 
 app.listen(port,()=>{
