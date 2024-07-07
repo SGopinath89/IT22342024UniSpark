@@ -154,6 +154,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const chatMessages =document.getElementById('chat-messages');
     const chatInput =document.getElementById('chat-input');
     const sendBtn =document.getElementById('send-btn');
-    const instructorId = 'INSTRUCTOR_ID';
-    const studentId = 'STUDENT_ID';
+    const instructorId = 'INSTRUCTOR_ID'; // Replace with actual instructor ID
+    const studentId = 'STUDENT_ID'; // Replace with actual student ID (you should get this from your auth system)
 });
