@@ -7,6 +7,7 @@ const name="Admin";
 const { verifyToken } = require("../security/auth");
 const bcrypt = require("bcrypt")
 const secretkey = "phyvauac.lk@2024"
+const jwt=require('jsonwebtoken')
 
 //Register part
 router.post('/register',async (req,res)=>{
@@ -53,12 +54,12 @@ router.post('/login',async (req,res)=>{
 
         const passMatch = await bcrypt.compare(password,Admin.password)
 
-        if(!password){
+        if(!passMatch){
             return res.status(400).json({error_message:"Invalid credentials"})
         }
 
 
-        const token = jwt.sign({username:Admin.username},secretkey)
+        const token = jwt.sign({username:user.username},secretkey)
         return res.status(200).json({token})
 
     }
