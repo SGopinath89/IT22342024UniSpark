@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 const instructorSchema = new Schema({
    
     Password : { type :String,required:true},
-	userame : { type :String,required:true},
+	username : { type :String,required:true},
 	
 })
 

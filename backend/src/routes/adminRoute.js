@@ -24,7 +24,7 @@ router.post('/register',async (req,res)=>{
             return res.status(400).json({error_message:"username already taken"})
         }
 
-        const salt = await bcrypt.genSalt()
+        const salt = await bcrypt.genSaltSync(10)
         password = await bcrypt.hash(password,salt)
 
         const result = await Admin.create({username,password})
@@ -52,14 +52,14 @@ router.post('/login',async (req,res)=>{
             return res.status(400).json({error_message:"Invalid credentials"})
         }
 
-        const passMatch = await bcrypt.compare(password,Admin.password)
+        const passMatch = await bcrypt.compare(password,user.password)
 
         if(!passMatch){
             return res.status(400).json({error_message:"Invalid credentials"})
         }
 
 
-        const token = jwt.sign({username:user.username},secretkey)
+        const token = jwt.sign({id:user._id},secretkey)
         return res.status(200).json({token})
 
     }

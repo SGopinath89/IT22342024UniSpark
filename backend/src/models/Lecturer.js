@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const lecturerSchema = new Schema({
     
-	password: { type :String,required:true},
+	Password: { type :String,required:true},
 	username: { type :String,required:true},
 	Department: { type :String,required:true}
 
