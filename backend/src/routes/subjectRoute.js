@@ -4,10 +4,10 @@ const Subject= require("../models/Subject");
 const Course= require("../models/Course");
 const Service = require("../service/GenericService")
 const{default:mongoose}=require('mongoose')
-const { verifyToken } = require("../security/auth");
+const { verifyToken,studentverifyToken, lecturerverifyToken, instructorverifyToken } = require("../security/auth");
 const name="Subject";
 
-router.get("/", verifyToken, (req, res) => {
+router.get("/", studentverifyToken, lecturerverifyToken, (req, res) => {
     
     Service.getAll(res,Subject,name).catch((error)=>{
         res.status(500).send(error+"Service error")
@@ -16,13 +16,14 @@ router.get("/", verifyToken, (req, res) => {
 });
 
 
-router.get("/:id", verifyToken,(req,res)=>{
+router.get("/:id", studentverifyToken, lecturerverifyToken,(req,res)=>{
     Service.getBYId(req,res,Subject,name).catch((error)=>{
         res.status(500).send("Server error")
     })
 });
 
-router.post("/", verifyToken, (req, res) => {
+//create subject
+router.post("/", lecturerverifyToken, (req, res) => {
     const {SubjectCode,Subjectname,Course_ID} = req.body;
     if (!SubjectCode || !Subjectname || !Course_ID) {
     res.status(404).send("Please provide required fields");
@@ -33,13 +34,13 @@ router.post("/", verifyToken, (req, res) => {
     } 
 });
 
-router.delete("/:id",verifyToken,(req,res)=>{
+router.delete("/:id",lecturerverifyToken,(req,res)=>{
     Service.deleteById(req,res,Subject,name).catch((error)=>{
         res.status(500).send(error+"Server Error")
     })
 })
 
-router.put("/:id", verifyToken, async(req, res) => {
+router.put("/:id", lecturerverifyToken, async(req, res) => {
     const id = req.params.id;
     const subjects = await Subject.findById(id).catch((error) => {
     console.error(error);

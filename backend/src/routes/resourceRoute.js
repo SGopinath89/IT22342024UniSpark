@@ -5,7 +5,7 @@ const Subject= require("../models/Subject");
 const Resource=require("../models/Resource"); 
 const Service = require("../service/GenericService")
 const{default:mongoose}=require('mongoose')
-const { verifyToken } = require("../security/auth");
+const { studentverifyToken,lecturerverifyToken,verifyToken } = require("../security/auth");
 const name="Resource";
 
 const storage= multer.diskStorage({
@@ -41,14 +41,14 @@ router.get('/sub/:id', async (req, res) => {
 
 
 //get all resources
-router.get("/",(req, res) => {
+router.get("/",studentverifyToken, lecturerverifyToken,(req, res) => {
     Service.getAll(res,Resource,name).catch((error)=>{
         res.status(500).send("Server Error")
     })
 });
 
 //get resource by id
-router.get("/:id",(req,res)=>{
+router.get("/:id",studentverifyToken, lecturerverifyToken,(req,res)=>{
     Service.getBYId(req,res,Resource,name).catch((error)=>{
         res.status(500).send("Server error")
     })
@@ -82,13 +82,13 @@ router.post('/:id', upload.single('resource'), async (req, res) => {
     }
 });
 //delete resource
-router.delete("/:id",(req,res)=>{
+router.delete("/:id",lecturerverifyToken,(req,res)=>{
     Service.deleteById(req,res,Resource,name).catch((error)=>{
         res.status(500).send(error+"Server Error")
     })
 });
 //update resource
-router.put("/:id", async(req, res) => {
+router.put("/:id",lecturerverifyToken, async(req, res) => {
     const id = req.params.id;
     const resources = await Resource.findById(id).catch((error) => {
     //console.error(error);
