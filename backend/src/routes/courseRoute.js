@@ -3,7 +3,7 @@ const router = express.Router();
 const Course= require("../models/Course");
 const Service = require("../service/GenericService")
 const{default:mongoose}=require('mongoose')
-//const { verifyToken } = require("../security/auth");
+const { verifyToken,lecturerverifyToken } = require("../security/auth");
 const name="Course";
 
 router.get("/", verifyToken, (req, res) => {
@@ -17,7 +17,7 @@ router.get("/:id", verifyToken, (req,res)=>{
     })
 });
 
-router.post("/", verifyToken, (req, res) => {
+router.post("/", lecturerverifyToken, (req, res) => {
     const { Course_Id,Course_name } = req.body;
     if (!Course_Id || !Course_name) {
     res.status(404).send("Please provide required fields");
@@ -28,13 +28,13 @@ router.post("/", verifyToken, (req, res) => {
     } 
 });
 
-router.delete("/:id",verifyToken,(req,res)=>{
+router.delete("/:id",lecturerverifyToken,(req,res)=>{
     Service.deleteById(req,res,Course,name).catch((error)=>{
         res.status(500).send(error+"Server Error")
     })
 });
 
-router.put("/:id", verifyToken, async(req, res) => {
+router.put("/:id", lecturerverifyToken, async(req, res) => {
     const id = req.params.id;
     const courses = await Course.findById(id).catch((error) => {
     console.error(error);

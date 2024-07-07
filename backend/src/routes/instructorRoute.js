@@ -4,7 +4,7 @@ const Instructor= require("../models/Instructor");
 const Service = require("../service/GenericService")
 const{default:mongoose}=require('mongoose')
 const name="Instructor";
-const { verifyToken } = require("../security/auth");
+const { verifyToken,instructorverifyToken } = require("../security/auth");
 const bcrypt = require("bcrypt")
 const secretkey = "phyvauac.lk@2024"
 const jwt=require('jsonwebtoken')
@@ -89,13 +89,13 @@ router.post("/", verifyToken, (req, res) => {
     } 
 });
 
-router.delete("/:id",verifyToken,(req,res)=>{
+router.delete("/:id",instructorverifyToken,(req,res)=>{
     Service.deleteById(req,res,Instructor,name).catch((error)=>{
         res.status(500).send(error+"Server Error")
     })
 });
 
-router.put("/:id", verifyToken, async(req, res) => {
+router.put("/:id", instructorverifyToken, async(req, res) => {
     const id = req.params.id;
     const instructors = await Instructor.findById(id).catch((error) => {
     console.error(error);

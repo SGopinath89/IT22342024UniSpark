@@ -4,7 +4,7 @@ const Admin= require("../models/Admin");
 const Service = require("../service/GenericService")
 const{default:mongoose}=require('mongoose')
 const name="Admin";
-const { verifyToken } = require("../security/auth");
+const { studentverifyToken } = require("../security/auth");
 const bcrypt = require("bcrypt")
 const secretkey = "phyvauac.lk@2024"
 const jwt=require('jsonwebtoken')
@@ -68,18 +68,18 @@ router.post('/login',async (req,res)=>{
     }
 })
 
-router.get("/", verifyToken, (req, res) => {
+router.get("/", studentverifyToken, (req, res) => {
     Service.getAll(res,Admin,name).catch((error)=>{
         res.status(500).send("Server Error")
     })
 });
-router.get("/:id", verifyToken, (req,res)=>{
+router.get("/:id", studentverifyToken, (req,res)=>{
     Service.getBYId(req,res,Admin,name).catch((error)=>{
         res.status(500).send("Server error")
     })
 });
 
-router.post("/", verifyToken, (req, res) => {
+router.post("/", studentverifyToken, (req, res) => {
     const { AdminId,Password,Name } = req.body;
     if (!AdminId || !Password || !Name) {
     res.status(404).send("Please provide required fields");
@@ -90,13 +90,13 @@ router.post("/", verifyToken, (req, res) => {
     } 
 });
 
-router.delete("/:id",verifyToken,(req,res)=>{
+router.delete("/:id",studentverifyToken,(req,res)=>{
     Service.deleteById(req,res,Admin,name).catch((error)=>{
         res.status(500).send(error+"Server Error")
     })
 });
 
-router.put("/:id", verifyToken, async(req, res) => {
+router.put("/:id", studentverifyToken, async(req, res) => {
     const id = req.params.id;
     const admins = await Admin.findById(id).catch((error) => {
     console.error(error);
