@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const instructorSchema = new Schema({
    
-    password : { type :String,required:true},
+    Password : { type :String,required:true},
 	userame : { type :String,required:true},
 	
 })

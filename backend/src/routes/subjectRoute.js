@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const Subject= require("../models/Subject");
+const Course= require("../models/Course");
 const Service = require("../service/GenericService")
 const{default:mongoose}=require('mongoose')
-//const { verifyToken } = require("../security/auth");
+const { verifyToken } = require("../security/auth");
 const name="Subject";
 
 router.get("/", verifyToken, (req, res) => {
