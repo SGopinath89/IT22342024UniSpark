@@ -22,21 +22,6 @@
             width: 600px;
             text-align: center;
         }
-        .button, .upload {
-            width: 200px;
-            padding: 12px;
-            background-color: #1877F2;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            margin: 10px;
-        }
-        .button:hover, .upload:hover {
-            background-color: #45a049;
-        }
         .back-arrow {
             position: absolute;
             top: 20px;
@@ -50,8 +35,21 @@
             align-items: center;
             cursor: pointer;
         }
-     
-        
+        .upload {
+            display: inline-block;
+            padding: 12px;
+            background-color: #1877F2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .upload:hover {
+            background-color: #45a049;
+        }
         .item {
             display: flex;
             justify-content: space-between;
@@ -61,12 +59,12 @@
         .item span {
             flex-grow: 1;
             text-align: left;
-			color: white;
+            color: white;
         }
     </style>
 </head>
 <body>
-    <div class="back-arrow">&#x2190;</div>
+    <div class="back-arrow" role="button" aria-label="Back">&#x2190;</div>
     <div class="container">
         <div class="item">
             <span>Quiz</span>
@@ -81,5 +79,6 @@
             <a href="#" class="upload">Upload</a>
         </div>
     </div>
+	<script src="script2.js"></script>
 </body>
 </html>
